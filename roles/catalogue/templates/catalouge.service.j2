@@ -1,0 +1,15 @@
+[Unit]
+Description=Catalouge Service
+After=network-online.target
+
+[Service]
+User=roboshop
+Environment=MONGO_URL="mongodb://{{ mongodb_host }}:27017/catalogue"
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=catalouge
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
